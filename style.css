@@ -23,17 +23,11 @@ body {
 .key {
     height: 25px;
     margin: 2px;
-    padding: 0 15px;
     color: var(--primairdark);
     background-color: var(--primair);
-    font-size: 1.1rem;
     border-radius: 6px;
     border: 1px solid var(--primairdark);
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 1.5px 4px 0 rgba(0,0,0,0.19);
-}
-
-.key {
-    font-size: 1.2rem;
 }
 
 .button:hover, 
@@ -49,7 +43,7 @@ body {
 }
 
 .space {
-    width: 200px;
+    width: 160px;
 }
 
 #word {
@@ -177,7 +171,7 @@ body {
         width: 30px;
     }
     .space {
-        width: 200px;
+        width: 195px;
     }
 }
 
@@ -191,7 +185,7 @@ body {
         width: 40px;
     }
     .space {
-        width: 200px;
+        width: 250px;
     }
 }
 
@@ -205,11 +199,9 @@ body {
         width: 50px;
     }
     .space {
-        width: 200px;
+        width: 310px;
     }
 }
-
-/* grid verdiepen */
 
 @media all and (min-width: 1020px) {
     #game {
@@ -224,6 +216,15 @@ body {
 
     #right {
         margin-top: 20vh;
+    }
+
+    .button,
+    .key {
+        font-size: 1.1rem;
+    }
+    
+    .key {
+        font-size: 1.2rem;
     }
 
     #swingDiv {
@@ -261,7 +262,7 @@ body {
 
     #swing .head {
         margin-left: 120px;
-        margin-top: -375px;
+        margin-top: -370px;
         height: 50px;
         width: 50px;
     }
@@ -278,7 +279,7 @@ body {
     #swing .right-leg {
         height: 90px;
         margin-top: -321px;
-        margin-left: 118px;
+        margin-left: 120px;
     }
     
     #swing .right-arm,
@@ -290,25 +291,5 @@ body {
     #swing .left-leg,
     #swing .right-leg {
         margin-top: -192px;
-    }
-}
-
-@media all and (min-width: 1400px) {
-    #game {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        grid-template-rows: repeat(1, auto);
-    }
-}
-
-@media all and (min-height: 1000px) {
-    #game {
-        display: grid;
-        grid-template-columns: repeat(1, auto);
-        grid-template-rows: repeat(1, auto);
-    }
-
-    #right {
-        margin-top: 0;
     }
 }
