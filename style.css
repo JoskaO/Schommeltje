@@ -1,0 +1,314 @@
+:root {
+    --basic: #fefae0;
+    --primairlight: #93987c;
+    --primair: #606c38;
+    --primairdark: #283618;
+    --secondair: #dda15e;
+    --secondairdark: #bc6c25; 
+}
+
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: normal;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--basic);
+    color: var(--primairdark);
+    text-align: center;
+}
+
+.button,
+.key {
+    height: 25px;
+    margin: 2px;
+    padding: 0 15px;
+    color: var(--primairdark);
+    background-color: var(--primair);
+    font-size: 1.1rem;
+    border-radius: 6px;
+    border: 1px solid var(--primairdark);
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 1.5px 4px 0 rgba(0,0,0,0.19);
+}
+
+.key {
+    font-size: 1.2rem;
+}
+
+.button:hover, 
+.key:hover {
+    cursor: pointer;
+    background-color: var(--primairdark);
+    color: var(--primairlight);
+    transition: .5s;
+}
+
+.key {
+    width: 25px;
+}
+
+.space {
+    width: 200px;
+}
+
+#word {
+    font-size: 2rem;
+    margin: 10px;
+    letter-spacing: 8px;
+}
+
+#lives,
+#keyboard,
+#keyboardText {
+    margin: 20px 0 ;
+}
+
+.gameover {
+    background-color: var(--secondairdark);
+}
+
+.winner {
+    background-color: var(--primair);
+}
+
+/* schommel */
+.displayNone {
+    display: none;
+}
+
+#swingDiv {
+    margin: 40px auto;
+    width: 150px;
+    height: 200px;
+}
+
+#swing div {
+    background: var(--primairdark);
+}
+  
+#swing .base {
+    height: 2px;
+    width: 150px;
+}
+  
+#swing .leftLine {
+    height: 200px;
+    width: 2px;
+}
+  
+#swing .aboveLine {
+    height: 2px;
+    width: 100px;
+}
+  
+#swing .rightRope {
+    float: left;
+    height: 112px;
+    margin-left: 49px;
+    width: 2px;
+}
+  
+#swing .leftRope {
+    float: left;
+    height: 112px;
+    margin-left: 46px;
+    width: 2px;
+}
+
+#swing .seat {
+    float: left;
+    height: 2px;
+    margin-left: 49px;
+    width: 50px;
+    margin-top: -90px;
+}
+
+#swing .head {
+    background: none;
+    border: 2px solid var(--primairdark);
+    border-radius: 100%;
+    float: left;
+    margin-left: 61px;
+    margin-top: -185px;
+    height: 25px;
+    width: 25px;
+}
+  
+#swing .body {
+    float: left;
+    height: 70px;
+    margin-top: -160px;
+    margin-left: 73px;
+    width: 2px;
+}
+  
+#swing .left-arm,
+#swing .right-arm,
+#swing .left-leg,
+#swing .right-leg {
+    float: left;
+    height: 45px;
+    margin-top: -160px;
+    margin-left: 59px;
+    transform: rotate(35deg);
+    width: 2px;
+}
+  
+#swing .right-arm,
+#swing .right-leg {
+    margin-left: 88px;
+    margin-top: -162px;
+    transform: rotate(140deg);
+}
+
+#swing .left-leg,
+#swing .right-leg {
+    margin-top: -95px;
+}
+
+@media all and (min-width: 430px) {
+    .button,
+    .key {
+        height: 30px;
+        margin: 3px;
+    }
+    .key {
+        width: 30px;
+    }
+    .space {
+        width: 200px;
+    }
+}
+
+@media all and (min-width: 560px) {
+    .button,
+    .key {
+        height: 40px;
+        margin: 4px;
+    }
+    .key {
+        width: 40px;
+    }
+    .space {
+        width: 200px;
+    }
+}
+
+@media all and (min-width: 670px) {
+    .button,
+    .key {
+        height: 50px;
+        margin: 5px;
+    }
+    .key {
+        width: 50px;
+    }
+    .space {
+        width: 200px;
+    }
+}
+
+/* grid verdiepen */
+
+@media all and (min-width: 1020px) {
+    #game {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    #title {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #right {
+        margin-top: 20vh;
+    }
+
+    #swingDiv {
+        width: 300px;
+        height: 400px;
+    }
+    
+    #swing .base {
+        width: 300px;
+    }
+    
+    #swing .leftLine {
+        height: 400px;
+    }
+    
+    #swing .aboveLine {
+        width: 200px;
+    }
+    
+    #swing .rightRope {
+        height: 225px;
+        margin-left: 96px;
+    }
+    
+    #swing .leftRope {
+        height: 225px;
+        margin-left: 100px;
+    }
+
+    #swing .seat {
+        margin-left: 98px;
+        width: 100px;
+        margin-top: -180px;
+    }
+
+    #swing .head {
+        margin-left: 120px;
+        margin-top: -375px;
+        height: 50px;
+        width: 50px;
+    }
+    
+    #swing .body {
+        height: 140px;
+        margin-top: -321px;
+        margin-left: 145px;
+    }
+    
+    #swing .left-arm,
+    #swing .right-arm,
+    #swing .left-leg,
+    #swing .right-leg {
+        height: 90px;
+        margin-top: -321px;
+        margin-left: 118px;
+    }
+    
+    #swing .right-arm,
+    #swing .right-leg {
+        margin-left: 175px;
+        margin-top: -324px;
+    }
+
+    #swing .left-leg,
+    #swing .right-leg {
+        margin-top: -192px;
+    }
+}
+
+@media all and (min-width: 1400px) {
+    #game {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(1, auto);
+    }
+}
+
+@media all and (min-height: 1000px) {
+    #game {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        grid-template-rows: repeat(1, auto);
+    }
+
+    #right {
+        margin-top: 0;
+    }
+}
