@@ -1,24 +1,52 @@
+const startID = document.getElementById('start');
+const woordenlijstID = document.getElementById('woordenlijst');
 const keyButtons = document.getElementsByClassName('key');
 const wordDiv = document.getElementById('word');
 const livesDiv = document.getElementById('lives');
 const allSwings = document.getElementsByClassName('swingClass');
 const rightWord = document.getElementById('text');
+const gameCounter = document.getElementById('gameCounter');
 
 let gameWord;
 let letter;
 let lengthWord;
 let lives;
+let countGames = 0;
+let gameWin = 0;
+let gameLose = 0;
 
 rightWord.classList.add("displayNone");
-document.getElementById('start').addEventListener("click", popUp);
 
-function popUp(){
-    document.getElementById('start').innerHTML = "Start nieuw spel"; 
+startID.addEventListener("click", startPopUp);
+woordenlijstID.addEventListener("click", startWoordenlijst);
 
-    //levens
+function startPopUp(){
+    start();
+    // setTimeout(inputGameWord, 75);
+    function inputGameWord(){
+        do { 
+            gameWord = prompt("Met welk woord wil jij spelen?");
+        }while (gameWord == "" )
+    }
+    inputGameWord()
+    word();
+    wordLive();
+};
+
+function startWoordenlijst(){
+    start();
+    let aantalWoorden = woordenlijst.length;
+    let random = Math.floor(Math.random() * (aantalWoorden) );
+    gameWord = woordenlijst[random];
+
+    word();
+    wordLive();
+}
+
+function start(){
+    // levens
     lives = 12;
     livesDiv.style.color = "var(--primairdark)"; 
-    livesDiv.innerHTML = "Je kan nog " + lives + " verkeerde letters kiezen";
  
     // winner/loser verwijderen
     rightWord.classList.add("displayNone");
@@ -36,17 +64,6 @@ function popUp(){
     Array.from(allSwings).forEach(function(swingClass) {
         swingClass.classList.add("displayNone");
     });
-
-    // nieuw woord voor spel
-    setTimeout(promptTimeout, 75);
-    function promptTimeout(){
-        gameWord = prompt("Met welk woord wil jij spelen?");
-        if (gameWord == "" ) {
-            gameWord = prompt("Met welk woord wil jij spelen?");
-        }else{
-            word();
-        };
-    };
 };
 
 // woord genereren
@@ -60,6 +77,11 @@ function word(){
     wordDiv.innerHTML = underscore.repeat(lengthWord);
 };
 
+// # letters en # levens
+function wordLive(){
+    livesDiv.innerHTML = `Je woord heeft ${lengthWord} letters. Je kan nog ${lives} verkeerde letters kiezen`;
+}
+
 // toetsenbord
 Array.from(keyButtons).forEach(function(keyButton) {
     keyButton.addEventListener("click", keyboard);
@@ -71,7 +93,6 @@ function keyboard(button) {
     button.target.style.cursor = "auto";
     button.target.style.color = "var(--primairdark)";
 
-
     if (gameWord.includes(letter)){
     button.target.style.background = "var(--primairlight)";
     }else{
@@ -80,7 +101,7 @@ function keyboard(button) {
     GuessWord();
 };
 
-// woord raden
+// letter raden
 function GuessWord(){
     if (gameWord.includes(letter)){ 
         let letterLocatie = -1; 
@@ -91,30 +112,41 @@ function GuessWord(){
             }
         }while (letterLocatie > -1);
     }else {
-        // levens
-        lives = lives - 1; 
-        livesDiv.innerHTML = "Je kan nog " + lives + " verkeerde letters kiezen";
-        
-        // plaatje
+        lives--; 
+        wordLive();
+
         document.getElementById('swing' + lives).classList.remove("displayNone");
 
-        // game over
         if (lives < 1){
-            livesDiv.innerHTML = "GAME OVER!";
-            rightWord.classList.remove("displayNone");
-            wordDiv.innerHTML = gameWord;
-            body.classList.add("gameover");
+            gameOver()
         };
     };
 };
 
+function gameOver(){
+    livesDiv.innerHTML = "GAME OVER!";
+    rightWord.classList.remove("displayNone");
+    wordDiv.innerHTML = gameWord;
+    body.classList.add("gameover");
+    gameCounts();
+}
+
 function winner(){
     if (gameWord == wordDiv.innerHTML){
+        livesDiv.innerHTML = "HOERA!";
         body.classList.add("winner");
+        gameCounts();
     } 
 }
 
-// hoevaak gespeeld, hoevaak goed, hoevaak mis
-// eventueel later --> letters herkennen: niet alleen met klikken, maar ook met drukken op toetsenbord?
-// eventueel later --> hint: 1 willekeurige letter laten verschijnen van het woord
-// eventueel later --> woord uit database
+// game counter
+function gameCounts(){
+    if (livesDiv.innerHTML == "HOERA!"){
+        countGames++;
+        gameWin++;
+    }else if (wordDiv.innerHTML == gameWord){
+        countGames++;
+        gameLose++;
+    };
+    gameCounter.innerHTML = `Je won ${gameWin} en verloor ${gameLose} keer`;
+};
