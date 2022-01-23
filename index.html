@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="woordenlijst.js" ></script> 
     <script defer src="script.js" ></script> 
     <title>Schommeltje</title>
 </head>
@@ -11,7 +12,11 @@
     <div id="game">
         <div id="title"><h1>Schommeltje</h1></div>
         <div id="left">
-            <div><button class="button" id="start">Start het spel</button></div>
+            <div>
+                <p>Nieuw spel:</p>
+                <button class="button" id="start">Eigen woord</button>
+                <button class="button" id="woordenlijst">Woordenlijst</button>
+            </div>
 
             <div id="swingDiv">
                 <div id="swing">
@@ -34,6 +39,7 @@
             </div>   
         </div>
         <div id="right">
+            <div id="gameCounter"></div>
             <div id="lives"></div>
             <div id="text">Het juiste woord was:</div>
             <div id="word"></div>
