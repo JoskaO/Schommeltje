@@ -1,7 +1,7 @@
 :root {
     --basic: #fefae0;
-    --primairlight: #93987c;
-    --primair: #606c38;
+    --primairlight: #606c38;
+    --primair: #93987c;
     --primairdark: #283618;
     --secondair: #dda15e;
     --secondairdark: #bc6c25; 
@@ -36,6 +36,24 @@ body {
     background-color: var(--primairdark);
     color: var(--primairlight);
     transition: .5s;
+}
+
+.wrongKey:hover,
+.rightKey:hover,
+.wrongKey,
+.rightKey {
+    cursor: auto;
+    color: var(--primairdark);
+}
+
+.wrongKey:hover,
+.wrongKey {
+    background-color: var(--secondairdark);
+}
+
+.rightKey:hover,
+.rightKey {
+    background-color: var(--primairlight);
 }
 
 .key {
