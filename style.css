@@ -19,6 +19,17 @@ body {
     text-align: center;
 }
 
+#newGame {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+#newGame > .button {
+    max-width: 150px;
+}
+
 .button,
 .key {
     height: 25px;
@@ -120,7 +131,7 @@ body {
 #swing .rightRope {
     float: left;
     height: 112px;
-    margin-left: 49px;
+    margin-left: 50px;
     width: 2px;
 }
   
@@ -134,7 +145,7 @@ body {
 #swing .seat {
     float: left;
     height: 2px;
-    margin-left: 49px;
+    margin-left: 50px;
     width: 50px;
     margin-top: -90px;
 }
@@ -165,7 +176,8 @@ body {
     float: left;
     height: 45px;
     margin-top: -160px;
-    margin-left: 59px;
+    margin-left: 60px;
+    transform: translateX(50%);
     transform: rotate(35deg);
     width: 2px;
 }
@@ -211,6 +223,23 @@ body {
 }
 
 @media all and (min-width: 670px) {
+    #newGame {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    #newGame > p {
+        grid-column-start: 2;
+    }
+
+    #newGame > .button:nth-child(2){
+        grid-column-start: 3;
+    } 
+
+    #newGame > .button:nth-child(3){
+        grid-column-start: 4;
+    } 
+
     .button,
     .key {
         height: 50px;
@@ -225,6 +254,10 @@ body {
 }
 
 @media all and (min-width: 1020px) {
+    #newGame {
+        display: inline-block;
+    }
+    
     #game {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -249,68 +282,68 @@ body {
     }
 
     #swingDiv {
-        width: 300px;
-        height: 400px;
+        width: 225px;
+        height: 300px;
     }
     
     #swing .base {
-        width: 300px;
+        width: 255px;
     }
     
     #swing .leftLine {
-        height: 400px;
+        height: 300px;
     }
     
     #swing .aboveLine {
-        width: 200px;
+        width: 150px;
     }
     
     #swing .rightRope {
-        height: 225px;
-        margin-left: 96px;
+        height: 168px;
+        margin-left: 71px;
     }
     
     #swing .leftRope {
-        height: 225px;
-        margin-left: 100px;
+        height: 168px;
+        margin-left: 77px;
     }
 
     #swing .seat {
-        margin-left: 98px;
-        width: 100px;
-        margin-top: -180px;
+        margin-left: 71px;
+        width: 81px;
+        margin-top: -135px;
     }
 
     #swing .head {
-        margin-left: 120px;
-        margin-top: -370px;
-        height: 50px;
-        width: 50px;
+        margin-left: 90px;
+        margin-top: -277px;
+        height: 37px;
+        width: 37px;
     }
     
     #swing .body {
-        height: 140px;
-        margin-top: -321px;
-        margin-left: 145px;
+        height: 105px;
+        margin-top: -240px;
+        margin-left: 108px;
     }
     
     #swing .left-arm,
     #swing .right-arm,
     #swing .left-leg,
     #swing .right-leg {
-        height: 90px;
-        margin-top: -321px;
-        margin-left: 120px;
+        height: 67px;
+        margin-top: -240px;
+        margin-left: 89px;
     }
     
     #swing .right-arm,
     #swing .right-leg {
-        margin-left: 175px;
-        margin-top: -324px;
+        margin-left: 130px;
+        margin-top: -242px;
     }
 
     #swing .left-leg,
     #swing .right-leg {
-        margin-top: -192px;
+        margin-top: -144px;
     }
 }
