@@ -46,7 +46,7 @@ function startWoordenlijst(){
 function start(){
     // levens
     lives = 12;
-    livesDiv.style.color = "var(--primairdark)"; 
+    // livesDiv.style.color = "var(--primairdark)"; 
  
     // winner/loser verwijderen
     rightWord.classList.add("displayNone");
@@ -55,8 +55,8 @@ function start(){
 
     // alle kleuren van de toetsen afhalen
     Array.from(keyButtons).forEach(function(keyButton) {
-        keyButton.style.background = null;
-        keyButton.style.cursor = null;
+        keyButton.classList.remove("rightKey");
+        keyButton.classList.remove("wrongKey");
         keyButton.disabled = false;
     });
 
@@ -90,13 +90,11 @@ Array.from(keyButtons).forEach(function(keyButton) {
 function keyboard(button) {
     letter = button.target.id;
     button.target.disabled = true;
-    button.target.style.cursor = "auto";
-    button.target.style.color = "var(--primairdark)";
 
     if (gameWord.includes(letter)){
-    button.target.style.background = "var(--primairlight)";
+        button.target.classList.add("rightKey");
     }else{
-    button.target.style.background = "var(--secondairdark)";
+        button.target.classList.add("wrongKey")
     };
     GuessWord();
 };
@@ -123,21 +121,30 @@ function GuessWord(){
     };
 };
 
+function disableKey(){
+    Array.from(keyButtons).forEach(function(keyButton) {
+        keyButton.disabled = true;
+        keyButton.classList.add("wrongKey");
+    });
+};
+
 function gameOver(){
     livesDiv.innerHTML = "GAME OVER!";
     rightWord.classList.remove("displayNone");
     wordDiv.innerHTML = gameWord;
     body.classList.add("gameover");
+    disableKey();
     gameCounts();
-}
+};
 
 function winner(){
     if (gameWord == wordDiv.innerHTML){
         livesDiv.innerHTML = "HOERA!";
         body.classList.add("winner");
+        disableKey();
         gameCounts();
-    } 
-}
+    };
+};
 
 // game counter
 function gameCounts(){
