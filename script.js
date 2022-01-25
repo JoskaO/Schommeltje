@@ -21,32 +21,30 @@ startID.addEventListener("click", startPopUp);
 woordenlijstID.addEventListener("click", startWoordenlijst);
 
 function startPopUp(){
-    start();
-    // setTimeout(inputGameWord, 75);
+    start()
     function inputGameWord(){
         do { 
             gameWord = prompt("Met welk woord wil jij spelen?");
         }while (gameWord == "" )
     }
     inputGameWord()
-    word();
-    wordLive();
+    word()
+    wordLive()
 };
 
 function startWoordenlijst(){
-    start();
+    start()
     let aantalWoorden = woordenlijst.length;
     let random = Math.floor(Math.random() * (aantalWoorden) );
     gameWord = woordenlijst[random];
 
-    word();
-    wordLive();
+    word()
+    wordLive()
 }
 
 function start(){
     // levens
     lives = 12;
-    // livesDiv.style.color = "var(--primairdark)"; 
  
     // winner/loser verwijderen
     rightWord.classList.add("displayNone");
@@ -96,7 +94,7 @@ function keyboard(button) {
     }else{
         button.target.classList.add("wrongKey")
     };
-    GuessWord();
+    GuessWord()
 };
 
 // letter raden
@@ -104,17 +102,15 @@ function GuessWord(){
     if (gameWord.includes(letter)){ 
         let letterLocatie = -1; 
         do {letterLocatie = gameWord.indexOf(letter, letterLocatie + 1);
-            winner();
+            winner()
             if (letterLocatie > -1){
             wordDiv.innerHTML = wordDiv.innerHTML.substring(0, letterLocatie) + letter + wordDiv.innerHTML.substring(letterLocatie + 1);
             }
         }while (letterLocatie > -1);
     }else {
         lives--; 
-        wordLive();
-
+        wordLive()
         document.getElementById('swing' + lives).classList.remove("displayNone");
-
         if (lives < 1){
             gameOver()
         };
@@ -133,16 +129,16 @@ function gameOver(){
     rightWord.classList.remove("displayNone");
     wordDiv.innerHTML = gameWord;
     body.classList.add("gameover");
-    disableKey();
-    gameCounts();
+    disableKey()
+    gameCounts()
 };
 
 function winner(){
     if (gameWord == wordDiv.innerHTML){
         livesDiv.innerHTML = "HOERA!";
         body.classList.add("winner");
-        disableKey();
-        gameCounts();
+        disableKey()
+        gameCounts()
     };
 };
 
